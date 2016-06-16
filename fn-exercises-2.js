@@ -17,6 +17,24 @@ function maxOfThree(x, y, z){
     else return z;
 }
 
+function maxOfThreeV2(x, y, z){
+    var max = null;
+    if (x > max) max = x;
+    if (y > max) max = y;
+    if (z > max) max = z;
+    return max;
+}
+
+function maxOfThreeV3(x, y, z){ return Math.max(x, y, z); }
+
+function maxOfThreeV4(x, y, z){
+    var items = [x, y, z], max = null;
+    for (var i = 0; i < items.length; i++) {
+        if (items[i] > max) max = items[i];
+    };
+    return max;
+}
+
 // ---------------------
 // Write a function that takes a character (i.e. a string of length 1) and returns true if it is a vowel, false otherwise.
 // ---------------------
@@ -31,12 +49,13 @@ function isVowel(char){
 // Write a function translate() that will translate a text into "Rovarspraket". That is, double every consonant and place an occurrence of "o" in between. For example, translate("this is fun") should return the string "tothohisos isos fofunon".
 // ---------------------
 
-function rovarspraket(phrase){
+function translate(phrase){
     var newPhrase = '';
     for (var i = 0; i < phrase.length; i++) {
-        if (!isVowel(phrase[i]) && phrase[i] != ' ' && phrase[i] != '.')
-            newPhrase += phrase[i] + 'o' + phrase[i];
-        else newPhrase += phrase[i];
+        var char = phrase[i];
+        if (!isVowel(char) && char != ' ' && char != '.')
+            newPhrase += char + 'o' + char;
+        else newPhrase += char;
     };
     return newPhrase;
 }

@@ -38,6 +38,11 @@ function avg(x, y, z){ return (x + y + z) / 3; }
 // Write a function called `getLength` that takes one
 // parameter (a string) and returns the length
 function getLength(str){ return str.length; }
+function strLength(str){
+    var count = 0;
+    while (str[count] !== undefined) count++;
+    return count;
+}
 
 
 
@@ -55,7 +60,7 @@ function greaterThan(x, y){ return y > x; }
 // single parameter and returns a string that
 // is formated like "Hello, Name!" where *Name*
 // is the parameter that was passed in.
-function greet(name){ return "Hello, " + name; }
+function greet(name){ return "Hello, " + name + "!"; }
 
 
 
