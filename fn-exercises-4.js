@@ -7,7 +7,9 @@
 // values associated with property names.
 // -----------
 function pluck(list, propertyName) {
-    // YOUR CODE HERE
+    return map(list, function(item){
+        return item[propertyName];
+    });
 }
 
 // tests
@@ -23,7 +25,9 @@ console.assert(pluck(stooges, 'age')[2] === 60)
 // otherwise it is.
 // -----------
 function reject(list, predicate) {
-    // YOUR CODE HERE
+    return filter(list, function(item){
+        return ! predicate(item);
+    });
 }
 
 // tests
@@ -40,7 +44,10 @@ console.assert(odds[4] === 9)
 // otherwise returns undefined.
 // -----------
 function find(list, predicate) {
-    // YOUR CODE HERE
+    for (var i = 0; i < list.length; i++) {
+        if (predicate(list[i])) return list[i];
+    };
+    return undefined;
 }
 
 // tests
@@ -51,14 +58,24 @@ var people = [
     {name: "Dorton", teaches: "life"}
 ]
 var JS = find(people, function(n){ return n.teaches === "JS" })
+var N = find(people, function(n){ return n.teaches === "Python" })
 console.assert(JS.name === "Matt")
+console.assert(N === undefined)
 
 // -----------
 // Write a function where() that filters for all the values
 // in the properties object.
 // -----------
 function where(list, properties) {
-    // YOUR CODE HERE
+    return filter(list, function(item){
+        var hasProp;
+        var propArray = Object.keys(properties);
+        forEach(propArray, function(prop){
+            if (properties[prop] == item[prop] && hasProp !== false) hasProp = true;
+            else hasProp = false;
+        });
+        return hasProp;
+    });
 }
 
 // tests
